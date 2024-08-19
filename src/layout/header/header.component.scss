@@ -3,9 +3,10 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
-    background-color: #c2c7cc;
+    background-color: #eeeeee;
     box-shadow: #4f5050 0px 0px 10px;
     height: 80px;
+    color: #ff3131;
    
 }
 .header-content{
@@ -15,19 +16,17 @@
     .inner-header-left{
         display: flex;
         align-items: center;
-        img{
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-        h1{
-            font-size: 20px;
-            color: #ee4e0f;
-        }
         .menu-toggle{
             display: flex;
             padding: 0.5em;
+
+            .btn-primary{
+                background-color: #ff3131;
+                color: white;
+                border: none;
+                padding: 10px;
+                border-radius: 5px;
+            }
         }
         .search-bar{
             display: flex;
@@ -41,8 +40,8 @@
             button{
                 padding: 5px;
                 border-radius: 5px;
-                border: 1px solid #ee4e0f;
-                background-color: #ee4e0f;
+                border: 1px solid #ff3131;
+                background-color: #ff3131;
                 color: white;
             }   
     }
@@ -61,11 +60,11 @@
         gap: 10px;
         .notification-icon{
             font-size: 20px;
-            color: #ee4e0f;
+            color: #ff3131;
         }
         .notification-count{
-            background-color: #ee4e0f;
-            color: white;
+            background-color: #ff3131;
+            color: #ff3131;
             padding: 5px;
             border-radius: 50%;
         }
@@ -78,11 +77,11 @@
         
         .user-icon{
             font-size: 20px;
-            color: #ee4e0f;
+            color: #ff3131;
         }
         .user-name{
             font-size: 16px;
-            color: #ffffff;
+            color: #535252;
         }
         .user-image{
             width: 30px;

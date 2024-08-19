@@ -11,9 +11,57 @@ import { Component } from '@angular/core';
         <h3>MaxCo Retail</h3>
       </div>
     
-        <a href="#">Dashboard</a>
-        <a href="#"></a>
-        <a href="#">Link 3</a>    
+      <div class="menu">
+        <ul>
+          <li>
+            <a href="#">
+              <i class="fa fa-home"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-sign-out"></i>
+              <span>Products</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-folder"></i>
+              <span>Categories</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-store-alt"></i>
+              <span>Orders</span>
+            </a>
+          <li>
+          <li>
+            <a href="#">
+              <i class="fas fa-door-open"></i>
+              <span>Inventories</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-user"></i>
+              <span>Customers</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-poll"></i>
+              <span>Report</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-sign-out"></i>
+              <span>Settings</span>
+            </a>
+          </li>
+        </ul>  
       
       </div>
   `,

@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   imports: [],
   template: `
 <div class="main-header">
-    <div class="container">
+    <div class="container-fluid">
       <div class="header-content">
         <div class="inner-header-left">
         <div class="menu-toggle">

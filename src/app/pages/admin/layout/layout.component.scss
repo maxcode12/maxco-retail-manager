@@ -8,8 +8,8 @@ main {
 /* Side Navbar */
 .side-navbar {
     width: 250px;
-    background-color: #0c0c0c;
-    color: white;
+    background-color: #ffffff;
+    color: #ff3131;
     padding: 20px;
     position: fixed;
     top: 0;
@@ -18,16 +18,7 @@ main {
     box-sizing: border-box;
 }
 
-.side-navbar a {
-    display: block;
-    color: white;
-    padding: 10px 0;
-    text-decoration: none;
-}
 
-.side-navbar a:hover {
-    background-color: #444;
-}
 
 /* Top Navbar */
 .top-navbar {
