@@ -1,0 +1,17 @@
+.inner-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    background-color: #c2c7cc;
+    box-shadow: #4f5050 0px 0px 10px;
+    .inner-header-left{
+        display: flex;
+        align-items: center;
+    }
+
+    .inner-header-right{
+        display: flex;
+        align-items: center;
+    }
+}
