@@ -4,6 +4,7 @@ import {AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModul
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Authenticate } from '../../../../entities/authenticate';
+import { AuthenticationService } from '../../../../services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ import { Authenticate } from '../../../../entities/authenticate';
 })
 export class LoginComponent implements OnInit {
 loginForm: FormGroup;
+errorMessage: string = '';
 
 private Login: Authenticate = new Authenticate();
 @Input() 
@@ -32,8 +34,8 @@ set hasError(value: boolean) {
 @Output() formError = new EventEmitter();
 @Output() loginSubmit = new EventEmitter();
 
-get username(): AbstractControl | null {
-  return this.loginForm.get('username');
+get email(): AbstractControl | null {
+  return this.loginForm.get('email');
 }
 
 get password(): AbstractControl | null {
@@ -41,10 +43,11 @@ get password(): AbstractControl | null {
 }
 
 constructor(private fb: FormBuilder,
-   private http: HttpClient, private router: Router) {
-    this.loginForm = new FormGroup({  
-      username: new FormControl(null, [Validators.required]),
-      password: new FormControl(null, [Validators.required])
+   private router: Router,
+  private service: AuthenticationService) {
+    this.loginForm =this.fb.group({  
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
     });
  }
  
@@ -56,16 +59,26 @@ constructor(private fb: FormBuilder,
     
   }
 
-   
-
   onLogin() {  
-      this.http.post('https://localhost:7064/api/Auth/login', this.login).subscribe((res: any) => {
-        if (res.result) {
-         alert('Login Success');
-         this.router.navigate(['/admin/dashboard']);
-        }else{ alert('Login Failed');}
-       
-      });
+    this.service.loginPost(this.loginForm.value).subscribe({
+      next: (response)=>{
+        if (response) {
+          alert('Login Success');
+          this.router.navigate(['/dashboards']);
+        }else{
+         
+          alert('Login Failed');
+          error:(err: any) =>{
+
+            this.errorMessage = 'Invalid username or password';
+            console.log('Login failed',err);
+            this.formError.emit(true);
+          }
+        }
+
+      }
+    });
+
       console.log(this.loginForm.value);
     
   }

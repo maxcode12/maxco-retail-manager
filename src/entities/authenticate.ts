@@ -1,10 +1,10 @@
 
 export class Authenticate {
     
-    username: string ;
+    email: string ;
     password: string ;
     // rememberMe: boolean;
      constructor() {
-        this.username = '';
+        this.email = '';
         this.password = '';}
 }

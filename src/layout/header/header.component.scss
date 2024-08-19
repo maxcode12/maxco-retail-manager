@@ -1,17 +1,95 @@
-.inner-header{
+.main-header{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
     background-color: #c2c7cc;
     box-shadow: #4f5050 0px 0px 10px;
+    height: 80px;
+   
+}
+.header-content{
+    display: flex;
+    justify-content: space-between; 
+
     .inner-header-left{
         display: flex;
         align-items: center;
+        img{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        h1{
+            font-size: 20px;
+            color: #ee4e0f;
+        }
+        .menu-toggle{
+            display: flex;
+            padding: 0.5em;
+        }
+        .search-bar{
+            display: flex;
+            flex-direction: row;
+            padding: 0.5em;
+            align-items: center;
+            .form-group{
+                display: flex;
+                gap: 10px;
+            }
+            button{
+                padding: 5px;
+                border-radius: 5px;
+                border: 1px solid #ee4e0f;
+                background-color: #ee4e0f;
+                color: white;
+            }   
     }
 
-    .inner-header-right{
+   
+    
+}
+.inner-header-right{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap:10px;
+    .notification{
         display: flex;
         align-items: center;
+        gap: 10px;
+        .notification-icon{
+            font-size: 20px;
+            color: #ee4e0f;
+        }
+        .notification-count{
+            background-color: #ee4e0f;
+            color: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+
     }
+    .user-info{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        .user-icon{
+            font-size: 20px;
+            color: #ee4e0f;
+        }
+        .user-name{
+            font-size: 16px;
+            color: #ffffff;
+        }
+        .user-image{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+    }
+}
+
 }

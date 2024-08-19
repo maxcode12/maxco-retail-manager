@@ -1,0 +1,93 @@
+main {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Side Navbar */
+.side-navbar {
+    width: 250px;
+    background-color: #0c0c0c;
+    color: white;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.side-navbar a {
+    display: block;
+    color: white;
+    padding: 10px 0;
+    text-decoration: none;
+}
+
+.side-navbar a:hover {
+    background-color: #444;
+}
+
+/* Top Navbar */
+.top-navbar {
+     background-color: #f0f0f0;
+    color: white;
+    // padding: 10px;
+    width: calc(100% - 250px);
+    position: fixed;
+    top: 0;
+    left: 250px;
+    box-sizing: border-box;
+}
+
+/* Main Content */
+.main-content {
+    margin-top: 90px; /* Adjust according to top navbar height */
+    margin-left: 250px;
+    padding: 20px;
+    box-sizing: border-box;
+    flex: 1;
+    overflow-y: auto;
+}
+
+ /* Responsive Styles */
+ @media screen and (max-width: 768px) {
+    .side-navbar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 10px;
+    }
+
+    .top-navbar {
+        width: 100%;
+        left: 0;
+        top: auto;
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        margin-top: 90px; /* Space below top navbar */
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .side-navbar {
+        display: none; /* Hide side navbar on small screens */
+    }
+
+    .top-navbar {
+        width: 100%;
+        left: 0;
+    }
+
+    .main-content {
+        margin-left: 0;
+        margin-top: 60px; /* Space below top navbar */
+        padding: 10px;
+    }
+}
