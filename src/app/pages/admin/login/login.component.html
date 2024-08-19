@@ -10,13 +10,22 @@
                         <h2>Log In</h2>
                     </div>
                     <div class="row">
-                        <form control="" class="form-group">
+                        <form  class="form-group" [formGroup]="loginForm">
                             <div class="row">
-                                <input type="text" name="username" id="username" class="form__input" placeholder="Username">
+                                <input type="text" formControlname="username" 
+                                 name="username" id="username" 
+                                 class="form__input" placeholder="Username" required>
+                            
+                            
                             </div>
                             <div class="row">
                                 <!-- <span class="fa fa-lock"></span> -->
-                                <input type="password" name="password" id="password" class="form__input" placeholder="Password">
+                                <input type="password"
+                                 formControlName="password" 
+                                 name="password" id="password" 
+                                 class="form__input" placeholder="Password" required>
+                                
+                                
                             </div>
                             <div class="row">
                                 <div class="form-check">
@@ -26,7 +35,7 @@
                             </div>
                             <div class="row">
                                 <div class="form-group">
-                                    <input type="submit" value="Login" class="btn">
+                                    <button type="button" value="Login"  (click)="onLogin()"  class="btn"> Login</button>
                                 </div>
                             
                             </div>
