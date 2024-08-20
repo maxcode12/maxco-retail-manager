@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-side-navbar',
   standalone: true,
-  imports: [],
+  imports: [RouterModule, RouterLink],
   template: `
     <div>
       <div class="logo">
@@ -20,7 +21,7 @@ import { Component } from '@angular/core';
             </a>
           </li>
           <li>
-            <a href="#">
+            <a [routerLink]="['/products']" routerLinkActive="router-link-active" >
               <i class="fa fa-sign-out"></i>
               <span>Products</span>
             </a>

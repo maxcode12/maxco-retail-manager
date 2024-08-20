@@ -92,3 +92,30 @@
 }
 
 }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .main-header {
+      height: 60px; /* Reduce header height for smaller screens */
+    }
+  
+    .inner-header-left {
+      flex-direction: column; /* Stack elements vertically on smaller screens */
+      align-items: flex-start;
+    }
+  
+    .search-bar {
+      width: 100%; /* Make search bar full width */
+      margin-top: 10px; /* Add spacing between menu toggle and search bar */
+    }
+  
+    .inner-header-right {
+      flex-direction: column; /* Stack elements vertically on smaller screens */
+      align-items: flex-start;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    /* Additional adjustments for smaller screens */
+    /* Example: Hide search bar or reduce font sizes */
+  }
