@@ -1,7 +1,7 @@
 import { METHODS } from "http";
 
 export const Constant = {
-    API_END_POINT: 'https://localhost:7064/api/Auth/',
+    API_END_POINT_AUTH: 'https://localhost:7064/api/Auth/',
     API_END_POINT_PRODUCT: 'https://localhost:7064/api/Product/',
     API_END_POINT_CATEGORY: 'https://localhost:7064/api/Category/',
     API_END_POINT_INVENTORY: 'https://localhost:7064/api/Inventory/',
@@ -10,11 +10,13 @@ export const Constant = {
     API_END_POINT_SALESDETAILS: 'https://localhost:7064/api/SalesDetail/',
     API_END_POINT_PURCHASEDETAILS: 'https://localhost:7064/api/PurchaseDetails/',
     API_END_POINT_USERS: 'https://localhost:7064/api/User/',
+    API_END_POINT_LOCATION: 'https://localhost:7064/api/Location/',
+    API_END_POINT_PAYMENTS: 'https://localhost:7064/api/Payment/',
 
 
 
     METHODS: {
-        GET_ALL_PRODUCT: 'GetAllProduct',
+        GET_ALL_PRODUCT: 'GetAllProducts',
         GET_ALL_PRODUCT_BY_ID: 'GetAllProductById',
         GET_ALL_CATEGORY: 'GetAllCategory',
         GET_ALL_CATEGORY_BY_ID: 'GetAllCategoryById',
@@ -29,6 +31,7 @@ export const Constant = {
         GET_ALL_PURCHASEDETAILS: 'GetAllPurchaseDetails',
         
         GET_ALL_USERS: 'GetAllUser',
+        GET_CURRENTUSER: 'GetCurrentUser',
 
 
         POST_Create_PRODUCT: 'CreateProduct',
@@ -39,11 +42,18 @@ export const Constant = {
         POST_Create_SALESDETAILS: 'CreateSalesDetail',
         POST_Create_PURCHASEDETAILS: 'CreatePurchaseDetails',
         POST_Create_USER: 'CreateUser',
+        POST_LOGIN: 'login',
 
         PUT_UPDATE_PRODUCT: 'UpdateProduct',
         PUT_UPDATE_CATEGORY: 'UpdateCategory',
         PUT_UPDATE_INVENTORY: 'UpdateInventory',
         PUT_UPDATE_SALES: 'UpdateSale',
         DELETE_PRODUCT: 'DeleteProduct',
+
+        POST_Create_LOCATION: 'CreateLocation',
+        GET_ALL_LOCATION: 'GetAllLocation',
+
+        POST_Create_PAYMENT: 'CreatePayment',
+        GET_ALL_PAYMENT: 'GetAllPayments',
     }
 }

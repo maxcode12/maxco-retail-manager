@@ -12,4 +12,7 @@ export class UserService {
   getUsers(){
     return this.http.get(Constant.API_END_POINT_USERS + Constant.METHODS.GET_ALL_USERS);
   }
+
+  
+
 }
