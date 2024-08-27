@@ -1,6 +1,6 @@
 
 export interface AuthenticateDto{
-    username: string;
+    email: string;
     password: string;
     // rememberMe: boolean;
 }

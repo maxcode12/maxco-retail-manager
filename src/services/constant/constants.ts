@@ -2,6 +2,7 @@ import { METHODS } from "http";
 
 export const Constant = {
     API_END_POINT_AUTH: 'https://localhost:7064/api/Auth/',
+    API_END_POINT_LOGIN: 'https://dummyjson.com/auth/',
     API_END_POINT_PRODUCT: 'https://localhost:7064/api/Product/',
     API_END_POINT_CATEGORY: 'https://localhost:7064/api/Category/',
     API_END_POINT_INVENTORY: 'https://localhost:7064/api/Inventory/',
@@ -43,6 +44,7 @@ export const Constant = {
         POST_Create_PURCHASEDETAILS: 'CreatePurchaseDetails',
         POST_Create_USER: 'CreateUser',
         POST_LOGIN: 'login',
+        POST_LOGIN_NEW: 'login',
 
         PUT_UPDATE_PRODUCT: 'UpdateProduct',
         PUT_UPDATE_CATEGORY: 'UpdateCategory',

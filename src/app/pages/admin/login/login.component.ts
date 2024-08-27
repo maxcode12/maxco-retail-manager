@@ -64,11 +64,12 @@ constructor(private fb: FormBuilder,
     .subscribe({
       next: (response)=>{
         if (response) {
-          alert('Login Success');
+          console.log('Login Success');
+          localStorage.setItem( 'JWT_TOKEN', response.accessToken);
           this.router.navigate(['/dashboards']);
         }else{
          
-          alert('Login Failed');
+          console.log('Login Failed');
           error:(err: any) =>{
 
             this.errorMessage = 'Invalid username or password';
