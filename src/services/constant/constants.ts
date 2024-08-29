@@ -33,6 +33,7 @@ export const Constant = {
         
         GET_ALL_USERS: 'GetAllUser',
         GET_CURRENTUSER: 'GetCurrentUser',
+        GET_USER_PROFILE: 'GetUserProfile',
 
 
         POST_Create_PRODUCT: 'CreateProduct',
@@ -44,7 +45,7 @@ export const Constant = {
         POST_Create_PURCHASEDETAILS: 'CreatePurchaseDetails',
         POST_Create_USER: 'CreateUser',
         POST_LOGIN: 'login',
-        POST_LOGIN_NEW: 'login',
+        POST_REFRESH_TOKEN: 'RefreshToken',
 
         PUT_UPDATE_PRODUCT: 'UpdateProduct',
         PUT_UPDATE_CATEGORY: 'UpdateCategory',

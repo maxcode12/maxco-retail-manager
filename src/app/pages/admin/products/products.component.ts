@@ -6,14 +6,34 @@ import { Product } from '../../../../entities/product';
 import { ProductDto } from '../../../../dtos/productDto';
 import { Category } from '../../../../entities/category';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, AsyncPipe } from '@angular/common';
 import { Location } from '../../../../entities/Location';
+import { LocationService } from '../../../../services/location.service';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatOptionModule} from '@angular/material/core';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatCard} from '@angular/material/card';
+import {MatRadioModule} from '@angular/material/radio';
+
+
 
 @Component({
   selector: 'app-products',
   standalone: true,
   imports: [RouterOutlet, ReactiveFormsModule,
-    RouterLink,CommonModule
+    RouterLink,CommonModule,MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCard,
+    AsyncPipe,
+    MatRadioModule 
+
   ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
@@ -24,7 +44,7 @@ export class ProductsComponent implements OnInit {
 isSidePanelVisible:boolean = true;
 
  productList: Product[] = [];
- private product: ProductDto = new ProductDto();
+ private product: Product  | null = null;
  categoryList: Category[] = [];
  locationList: Location[] = [];
 
@@ -39,20 +59,21 @@ isSidePanelVisible:boolean = true;
 
   constructor(private fb: FormBuilder,
     private categoryService: CategoryService, 
-    private productService: ProductService
-  ) {
+    private productService: ProductService, 
+    private locationService: LocationService) 
+ {
     this.addProductForm = this.fb.group({
       name: ['', Validators.required],
-      description: ['', Validators.required],
+      description: [''],
       sku: ['', Validators.required],
-      price: ['', Validators.required],
+      price: [''],
       deliveryTimeSpan: [''],
       quantity: [''],
-      imageUrl: ['', Validators.required],
-      isAvailable: [''],
-      isOnSale: [''],
-      isPOS: [''],
-      isOnline: [''],
+      imageUrl: [''],
+      isAvailable: [false],
+      isOnSale: [false],
+      isSellOnPOS: [false],
+      isSellOnline: [false],
       locationId: [''],
       categoryId: [''],
     });
@@ -72,6 +93,7 @@ isSidePanelVisible:boolean = true;
   ngOnInit() {
     this.getCategories();
     this.getProducts();
+    this.getLocations();
   }
 
   onSubmit(){ 
@@ -85,14 +107,13 @@ isSidePanelVisible:boolean = true;
       });
   }
 
-
+//get products
   getProducts(){
     return this.productService.getProducts().subscribe((response: any) => {
       this.productList = response;
       console.log(response);
     });
   }
-
 
   addProduct(){
     return this.productService.createProduct(this.addProductForm.value).subscribe((response: any) => {
@@ -105,6 +126,15 @@ isSidePanelVisible:boolean = true;
     return this.productService.deleteProduct(id).subscribe((response: any) => {
       console.log(response);
       this.getProducts();
+    });
+  }
+
+   //get locations
+   getLocations(){
+    return this.locationService.getLocations()
+    .subscribe((response: any) => {
+      this.locationList = response;
+      console.log(response);  
     });
   }
 }

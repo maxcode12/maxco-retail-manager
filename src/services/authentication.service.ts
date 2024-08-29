@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthenticateDto } from '../dtos/authentication/authenticateDto';
 import { Constant } from './constant/constants';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { response } from 'express';
-import { constants } from 'buffer';
+import { Router } from '@angular/router';
+import { AuthenticateDto } from '../dtos/authentication/authenticateDto';
+import {jwtDecode} from 'jwt-decode'; // Import the jwtDecode function
 
 @Injectable({
   providedIn: 'root'
@@ -15,31 +15,63 @@ export class AuthenticationService {
   private loggedUser?: string;
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   
-  constructor(private http: HttpClient) {
-   }
+  private http = inject(HttpClient);
+  private router = inject(Router);
+  constructor() {}
 
  loginPost(credentials: AuthenticateDto) : Observable<any> {
-  debugger;
+  
     return this.http
     .post(Constant.API_END_POINT_AUTH + 
       Constant.METHODS.POST_LOGIN, credentials)
-    .pipe(tap((response: any) => 
-      this.doLoginUser(credentials.email, credentials.password, response.accessToken)));
+      .pipe(tap((tokens: any)=> 
+        this.doLoginUser(credentials.email, JSON.stringify(tokens))));
   }
 
-  private doLoginUser(email: string, password:string, response: any) {
-    if (response && response.accessToken) {
-        this.loggedUser = email;
-        this.storeJwtTokens(response.accessToken);
-        this.isAuthenticatedSubject.next(true);
-    }else{
-      this.isAuthenticatedSubject.next(false);
-      console.log('Error: No token found');
-    }
+  private doLoginUser(email: string, token: any) {
+    this.loggedUser = email;
+    this.storeJwtTokens(token);
+    this.isAuthenticatedSubject.next(true);
   }
+
 
   private storeJwtTokens(jwt: string) {
+    alert(jwt);
     localStorage.setItem(this.JWT_TOKEN, jwt);
+  }
+
+  getCurrentAuthUser() {
+    return this.http.get(Constant.API_END_POINT_AUTH + 
+      Constant.METHODS.GET_USER_PROFILE);
+    
+  }
+
+  isTokenExpired() {
+    const tokens = localStorage.getItem(this.JWT_TOKEN);
+    if (!tokens) return true;
+    const token = JSON.parse(tokens).access_token;
+    const decoded = jwtDecode(token);
+    if (!decoded.exp) return true;
+    const expirationDate = decoded.exp * 1000;
+    const now = new Date().getTime();
+
+    return expirationDate < now;
+  }
+
+  refreshToken() {
+    let tokens: any = localStorage.getItem(this.JWT_TOKEN);
+    if (!tokens) return null;
+    tokens = JSON.parse(tokens);
+    let refreshToken = tokens.refresh_token;
+    return this.http
+      .post<any>(Constant.API_END_POINT_AUTH + Constant.METHODS.POST_REFRESH_TOKEN, {
+        refreshToken,
+      })
+      .pipe(tap((tokens: any) => this.storeJwtTokens(JSON.stringify(tokens))));
+  }
+
+  isLoggedIn() {
+    return this.isAuthenticatedSubject.asObservable();
   }
 
   logout() {
@@ -47,7 +79,6 @@ export class AuthenticationService {
     this.isAuthenticatedSubject.next(false);
   }
 
-  isLoggedIn() {
-    return this.isAuthenticatedSubject.asObservable();
-  }
 }
+
+
